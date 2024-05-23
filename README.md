@@ -2,7 +2,7 @@
 
 ## Overview
 
-CIGEN is a tool that finds input ranges that cause high compiler- induced
+CIGEN is a tool that finds input ranges that cause high compiler-induced
 numerical inconsistencies in numerical programs written in a compiled language.
 Currently CIGEN is tested with C/C++ language programs.
 
