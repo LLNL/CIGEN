@@ -4,14 +4,14 @@
 
 CIGEN is a tool that finds input ranges that cause high compiler-induced
 numerical inconsistencies in numerical programs written in a compiled language.
-Currently CIGEN is tested with C/C++ language programs.
+Currently, CIGEN is tested with C/C++ language programs.
 
-Numerical program behavior may diverge when they are compiled and ran
+Numerical program behavior may diverge when they are compiled and run
 differently. Many factors, such as different hardware architectures (for
 example, the x87 FPU with its 80-bit registers), different compilers, or
 different optimization flags (especially those that do not adhere to the
 IEEE-754 2008 standard), may cause the results of floating-point computations to
-become inconsistent. This kind of inconsistencies are known as *compiler-induced
+become inconsistent. These inconsistencies are known as *compiler-induced
 numerical inconsistencies*. Given a program with floating-point inputs and an
 output, CIGEN generates inputs to test the program in an approach described
 below and in our paper so that input ranges that cause high compiler-induced
@@ -46,14 +46,14 @@ git clone https://github.com/LLNL/CIGEN [CIGEN directory]
 
 ### Setup Docker container with code repository
 
-We have two options to setup the reproduction environment.
+We have two options to set up the reproduction environment.
 
 #### Option 1: pull and run Docker container from DockerHub
 
 In the Linux terminal, execute the following commands to pull the Docker
 container and run it. After entering the root user bash prompt inside the Docker
 container. The shell script will detect if you already have the container. If 
-not, it will run it; otherwise it simply resumes running.
+not, it will run it; otherwise, it simply resumes running.
 
 ```
 cd [CIGEN directory]
@@ -87,12 +87,12 @@ source setup.sh
 
 ### Run the GSL experiment (Section 4 in the paper)
 
-The GSL experiment contain 175 GSL functions with floating-point input and
+The GSL experiment contains 175 GSL functions with floating-point input and
 output, most of which are special functions such as Bessel and hypergeometric
 functions. Amongst these functions, 122 are single-parameter functions, while
 the rest 53 are multi-parameter. 
 
-(Following runtime are all on our reference system with Intel i9-10980XE CPU.)
+(The estimated runtimes below are all from our reference system with Intel i9-10980XE CPU.)
 
 Run the following command to call CIGEN to find input ranges that cause
 compiler-induced numerical inconsistencies for the 175 functions. During
@@ -104,8 +104,8 @@ cd /root/cigen/gsl_test
 python3 run_gsl.py -name=de -plot
 ```
 
-As comparison, we also include our implementation of CIV referenced throughout
-the paper. Run the following command to call CIV to find input that cause
+As a comparison, we also include our implementation of CIV referenced throughout
+the paper. Run the following command to call CIV to find input that causes
 high compiler-induced numerical inconsistencies for the 175 functions. During
 experiment execution, you can track your progress with the heartbeat output.
 **Estimated runtime of all 175 functions is 24 hours.**
@@ -115,8 +115,8 @@ cd /root/cigen/gsl_test
 python3 run_gsl.py -name=civ
 ```
 
-Also as comparison, we include our implementation of BGRT referenced throughout
-the paper. Run the following command to call BGRT to find input that cause
+Also as a comparison, we include our implementation of BGRT referenced throughout
+the paper. Run the following command to call BGRT to find input that causes
 high compiler-induced numerical inconsistencies for the 175 functions. During
 experiment execution, you can track your progress with the heartbeat output.
 **Estimated runtime of all 175 functions is 6 hours.**
