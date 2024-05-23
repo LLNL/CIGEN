@@ -1,0 +1,15 @@
+PREFIX		= /lib/
+PROG        = libTraceDiffPass.so
+MF_PATH=$(realpath $(dir $(lastword $(MAKEFILE_LIST))))
+
+default: main
+
+mk_workspace:
+	mkdir -p $(MF_PATH)/build
+
+main: mk_workspace
+	cd $(MF_PATH)/build && cmake $(MF_PATH) && make
+	cp $(MF_PATH)/build/TraceDiff/$(PROG) $(PREFIX)
+
+clean:
+	rm -r $(MF_PATH)/build
